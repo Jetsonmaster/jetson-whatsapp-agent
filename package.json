@@ -1,0 +1,15 @@
+{
+  "name": "jetson-whatsapp-agent",
+  "version": "1.0.0",
+  "description": "JETSON WhatsApp AI Agent",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
