@@ -19,6 +19,7 @@ const anthropic = new Anthropic({
 // 🔐 NÚMEROS AUTORIZADOS (adicione os seus aqui)
 const NUMEROS_AUTORIZADOS = [
   '18573408632',  // Seu número americano
+  '5511994387293',  // Seu número brasileiro
   // Adicione outros números aqui, um por linha
 ];
 
