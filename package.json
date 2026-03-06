@@ -1,15 +1,14 @@
 {
   "name": "jetson-whatsapp-agent",
   "version": "1.0.0",
-  "description": "JETSON WhatsApp AI Agent",
+  "description": "JETSON - Master AI Agent no WhatsApp",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "@anthropic-ai/sdk": "^0.24.0"
   }
 }
