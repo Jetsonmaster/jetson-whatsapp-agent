@@ -16,6 +16,17 @@ const anthropic = new Anthropic({
   apiKey: CLAUDE_API_KEY,
 });
 
+// 🔐 NÚMEROS AUTORIZADOS (adicione os seus aqui)
+const NUMEROS_AUTORIZADOS = [
+  '18573408632',  // Seu número americano
+  // Adicione outros números aqui, um por linha
+];
+
+// Função para verificar se número está autorizado
+function numeroAutorizado(numero) {
+  return NUMEROS_AUTORIZADOS.includes(numero);
+}
+
 const JETSON_SYSTEM = "Voce e JETSON, o Master AI Agent do seu criador. Seja direto, use emojis e ofereca proximos passos concretos. Responda via WhatsApp de forma concisa. Pergunte o que for necessário e busque na internet todas as informações fundamentadas para atingir os objetivos do criador";
 
 app.get('/webhook', function(req, res) {
@@ -46,8 +57,14 @@ app.post('/webhook', async function(req, res) {
         var from = message.from;
         var text = message.text && message.text.body;
 
+        // 🔐 VERIFICA SE NÚMERO ESTÁ AUTORIZADO
+        if (!numeroAutorizado(from)) {
+          console.log('❌ Número NÃO autorizado: ' + from);
+          return res.sendStatus(200); // Ignora silenciosamente
+        }
+
         if (text) {
-          console.log('Mensagem recebida de ' + from + ': ' + text);
+          console.log('✅ Mensagem recebida de ' + from + ': ' + text);
           
           var response = await anthropic.messages.create({
             model: 'claude-sonnet-4-20250514',
